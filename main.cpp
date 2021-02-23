@@ -15,11 +15,10 @@
 #include <chrono>
 #include "stopwatch.hpp"
 #include <algorithm>
-
+#include <random>
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    
     
     Stopwatch watchymcwatchface;
 
@@ -34,8 +33,9 @@ int main(int argc, const char * argv[]) {
     watchy.endwatch();
     
     // vector<int> nums;
-    // algorithm.mt19937(0)
-        
+    mt19937 timeywimey(0);
+    cout << "get a cat" << timeywimey << "Meow" << endl;
+    
     cout << "time taken " << watchy.getmilliseconds().count() << " milliseconds" << endl;
     
     return 0;
