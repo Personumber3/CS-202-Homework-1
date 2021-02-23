@@ -21,31 +21,34 @@ using namespace std;
 int main(int argc, const char * argv[]) {
 
     Stopwatch watchymcwatchface;
-        
-    cout << "meowth, that's right" << endl;
     watchymcwatchface.endwatch();
-    cout << "time taken " << watchymcwatchface.gettime() << " seconds" << endl;
-    cout << "time taken " << watchymcwatchface.getmilliseconds() << " milliseconds" << endl;
 
-    // vector<int> nums;
-    auto meow = chrono::high_resolution_clock();
-    mt19937 timeywimey(meow.now().time_since_epoch().count());
+// setting up random seed, and using it with mt19937 to create a random number generator.
+    auto seed = chrono::high_resolution_clock();
+    mt19937 timeywimey(seed.now().time_since_epoch().count());
     
+    // creates a vector for our random numbers.
     vector<int> numberset;
+    // creates a number to search for in our random numbers.
     vector<int> searchset{42};
+    // used to set upperbounds for updating vector
     int max;
+    // used so the vector doesn't get more elements that we want. not very elegent, but it's what I used and I think it works. should give sizes 10,100,1000,... instead of 10,110,1110,11110,...
     int i = 0;
+    // creates a separate stopwatch for each function
     Stopwatch watchy(watchymcwatchface);
     watchy.endwatch();
     Stopwatch watchface(watchymcwatchface);
     watchface.endwatch();
     Stopwatch watchy_watch(watchymcwatchface);
     watchy_watch.endwatch();
+    // for each initial loop, increases the size of the vector by an order of magnitude. then tests 4 functions on it and sees how long each takes.
     for(int k = 1; k < 10; ++k){
         max = pow(10,k);
         for(int j = i; j < max; ++j){
             numberset.push_back(timeywimey());
         }
+        
         watchy.restartwatch();
         search(numberset.begin(),numberset.end(),searchset.begin(),searchset.end());
         watchy.endwatch();
