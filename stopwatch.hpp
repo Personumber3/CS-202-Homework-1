@@ -17,8 +17,8 @@ public:
     
     void restartwatch();
     void endwatch();
-    std::chrono::duration<double> gettime();
-    std::chrono::duration<double> getmilliseconds();
+    double gettime();
+    double getmilliseconds();
 
     
 private:

@@ -17,11 +17,10 @@ void Stopwatch::restartwatch(){
 void Stopwatch::endwatch(){
     _stoptime = std::chrono::steady_clock::now();
 }
-std::chrono::duration<double> Stopwatch::gettime(){
+double Stopwatch::gettime(){
     std::chrono::duration<double> duration = _stoptime - _starttime;
-    return duration;
+    return duration.count();
 }
-std::chrono::duration<double> Stopwatch::getmilliseconds(){
+double Stopwatch::getmilliseconds(){
     std::chrono::duration<double> duration = (_stoptime - _starttime) * 1000;
-    return duration;
-}
+    return duration.count();

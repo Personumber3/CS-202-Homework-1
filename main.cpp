@@ -24,19 +24,28 @@ int main(int argc, const char * argv[]) {
 
     cout << "meowth, that's right" << endl;
     watchymcwatchface.endwatch();
-    cout << "time taken " << watchymcwatchface.gettime().count() << " seconds" << endl;
-    cout << "time taken " << watchymcwatchface.getmilliseconds().count() << " milliseconds" << endl;
+    cout << "time taken " << watchymcwatchface.gettime() << " seconds" << endl;
+    cout << watchymcwatchface.getmilliseconds() << " milliseconds" << endl;
 
-    Stopwatch watchface(watchymcwatchface);
-    watchface.endwatch();
+        auto seed = chrono::high_resolution_clock();
+    mt19937 timeywimey(seed.now().time_since_epoch().count());
+    
+    vector<int> numberset;
+    vector<int> searchset{42};
+    int max = 10;
+    int i = 0;
+    for(int j = i; j < max; ++j){
+        numberset.push_back(timeywimey());
+    }
     Stopwatch watchy(watchymcwatchface);
+    search(numberset.begin(),numberset.end(),searchset.begin(),searchset.end());
     watchy.endwatch();
+    cout << max << " items search time " << watchy.gettime() << " seconds." << endl;
     
-    // vector<int> nums;
-    mt19937 timeywimey(0);
-    cout << "get a cat" << timeywimey << "Meow" << endl;
-    
-    cout << "time taken " << watchy.getmilliseconds().count() << " milliseconds" << endl;
-    
-    return 0;
+    Stopwatch watchface(watchymcwatchface);
+        watchface.endwatch();
+        
+    cout << "time taken " << watchy.getmilliseconds() << " milliseconds" << endl;
+        
+        return 0;
 }
