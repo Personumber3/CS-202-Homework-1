@@ -22,6 +22,6 @@ std::chrono::duration<double> Stopwatch::gettime(){
     return duration;
 }
 std::chrono::duration<double> Stopwatch::getmilliseconds(){
-    std::chrono::duration<double> duration = (_stoptime - _starttime) / 1000;
+    std::chrono::duration<double> duration = (_stoptime - _starttime) * 1000;
     return duration;
 }
